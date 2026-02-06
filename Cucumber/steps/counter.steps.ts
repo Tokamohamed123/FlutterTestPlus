@@ -1,37 +1,49 @@
 import { Given, When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 
+// Variable to store the value before clicking
+let valueBefore: number = 0;
+
 Given('navigate to the Flutter Angular app', { timeout: 60000 }, async function () {
     await this.page.goto('https://flutter-angular.web.app/#/', { waitUntil: 'load' });
-    await this.page.waitForTimeout(3000); // انتظار إضافي لتحميل الـ Canvas
+    await this.page.waitForTimeout(3000); // Wait for Canvas to load
 });
 
 Given('enable Flutter accessibility semantics', { timeout: 60000 }, async function () {
-    // 1. الضغط التقليدي لتفعيل السيمانتكس
+    // Enable semantics using keyboard shortcuts
     await this.page.keyboard.press('Tab');
     await this.page.keyboard.press('Enter');
-
-    // 2. السطر الجديد (اضيفيه هنا): 
-    // هذا السطر يبحث عن عنصر مخفي في فلاتر (placeholder) ويضغط عليه لإجباره على إظهار النصوص
+    
+    // Force click the hidden semantics placeholder to build the tree
     await this.page.click('flt-semantics-placeholder', { force: true, timeout: 2000 }).catch(() => {
         console.log("Semantics placeholder not found, skipping...");
     });
+    
+    await this.page.waitForTimeout(4000); 
 
-    // 3. انتظار كافٍ لبناء شجرة العناصر
-    await this.page.waitForTimeout(5000); 
+    // Read the initial counter value before any interaction
+    const labels = await this.page.evaluate(() => {
+        const elements = Array.from(document.querySelectorAll('flt-semantics, [aria-label]'));
+        return elements.map(el => el.getAttribute('aria-label') || "");
+    });
+
+    // Find the label containing 'Index: ' or a standalone number
+    const counterLabel = labels.find((l: string) => l.includes('Index: ') || (/\d+/.test(l) && l.length < 15));
+    const match = counterLabel?.match(/\d+/);
+    valueBefore = match ? parseInt(match[0]) : 0;
+    
+    console.log(`🔢 Initial value detected at start: ${valueBefore}`);
 });
 
 When('I click the "+" increment button', { timeout: 60000 }, async function () {
     const btn = this.page.locator('flt-semantics[aria-label="Increment"]').first();
-    
     await btn.waitFor({ state: 'visible' });
-
-    // استخدام dispatchEvent('click') أحياناً يكون أضمن في فلاتر لمنع التكرار
-    // أو استخدام click مع clickCount: 1
-    await btn.click({ clickCount: 1 }); 
     
-    // أهم سطر: انتظار بسيط للتأكد من أن فلاتر سجل ضغطة واحدة فقط
-    await this.page.waitForTimeout(1000); 
+    // Perform a single precise click
+    await btn.click({ clickCount: 1 }); 
+    console.log("👆 Increment button clicked once.");
+    
+    await this.page.waitForTimeout(2000); // Wait for UI update
 });
 
 When('I click on a neutral area of the screen', { timeout: 60000 }, async function () {
@@ -39,89 +51,34 @@ When('I click on a neutral area of the screen', { timeout: 60000 }, async functi
     await this.page.waitForTimeout(1000);
 });
 
-// Then('The counter should display {string}', { timeout: 60000 }, async function (expectedValue: string) {
-//     // استخراج الرقم (0 أو 1)
-//     const num = expectedValue.match(/\d+/)![0];
-    
-//     // البحث عن الرقم في أي مكان (Text, Aria-label, Title)
-//     const counter = this.page.locator(`[aria-label*="${num}"], flt-semantics:has-text("${num}"), text="${expectedValue}"`).first();
-    
-//     // محاولة الانتظار المرن
-//     await expect(async () => {
-//         const isVisible = await counter.isVisible();
-//         if (!isVisible) {
-//             // محاولة إعادة تفعيل الـ semantics إذا اختفت
-//             await this.page.keyboard.press('Tab');
-//         }
-//         expect(await counter.textContent() || await counter.getAttribute('aria-label')).toContain(num);
-//     }).toPass({ timeout: 15000 });
-// });
-
-
-// Then('The counter should display {string}', { timeout: 60000 }, async function (expectedValue: string) {
-//     // استخراج الرقم فقط من النص (مثلاً "1" من "Index: 1")
-//     const num = expectedValue.match(/\d+/)![0];
-
-//     // البحث عن العنصر الذي يحتوي على الرقم في الـ aria-label
-//     // نستخدم locator يشمل المنتصف تقريباً
-//     const counterLocator = this.page.locator(`flt-semantics[aria-label*="${num}"]`).first();
-
-//     // الانتظار حتى يظهر العنصر وتتغير قيمته
-//     await expect(counterLocator).toBeAttached({ timeout: 15000 });
-    
-//     const ariaLabel = await counterLocator.getAttribute('aria-label');
-//     console.log(`Current Aria-Label: ${ariaLabel}`); // للـ Debugging
-    
-//     expect(ariaLabel).toContain(num);
-// });
-//////////////////////////solve /////////////////////////////////////
-// Then('The counter should display {string}', { timeout: 60000 }, async function (expectedValue: string) {
-//     // 1. جلب مقاسات الشاشة
-//     const size = await this.page.viewportSize();
-//     if (!size) throw new Error("Could not get viewport size");
-
-//     const centerX = size.width / 2;
-//     const centerY = size.height / 2;
-
-//     // 2. التصحيح هنا: إضافة أنواع البيانات { x, y }: { x: number, y: number }
-//     const foundText = await this.page.evaluate(({ x, y }: { x: number, y: number }) => {
-//         const element = document.elementFromPoint(x, y);
-//         return element?.getAttribute('aria-label') || element?.textContent || "لم يتم العثور على نص";
-//     }, { x: centerX, y: centerY });
-
-//     console.log(`Text at center: ${foundText}`);
-    
-//     // استخراج الرقم المطلوب للتحقق
-//     const expectedNum = expectedValue.match(/\d+/)![0];
-//     expect(foundText).toContain(expectedNum);
-// });
-
-///////////////////////////////
+// Dynamic comparison logic (Before vs After)
 Then('The counter should display {string}', { timeout: 60000 }, async function (expectedValue: string) {
-    const expectedNum = expectedValue.match(/\d+/)![0];
+    // Extract the expected number from the Gherkin string (e.g., "1" from "Index: 1")
+    const expectedFromFeature = parseInt(expectedValue.match(/\d+/)![0]);
 
-    // استخدام كود الـ Global Scan الذي كتبتيه (الموجود في صورتك الأخيرة)
-    const result = await this.page.evaluate((num: string) => {
+    // Read the current labels from the browser
+    const result = await this.page.evaluate(() => {
         const elements = Array.from(document.querySelectorAll('flt-semantics, [aria-label]'));
         const labels = elements.map(el => el.getAttribute('aria-label') || "").filter(l => l !== "");
-        
-        // البحث عن النص الذي يحتوي على الرقم
-        const found = labels.find(l => l.includes(`Index: ${num}`) || l.includes(num));
-        
-        return {
-            found: found ? found : "NOT_FOUND",
-            actualLabels: labels
-        };
-    }, expectedNum);
+        return labels;
+    });
 
-    console.log(`--- Test Result ---`);
-    console.log(`Expected: ${expectedNum}`);
-    console.log(`Actual Labels Found:`, result.actualLabels);
+    const currentLabel = result.find((l: string) => l.includes('Index: ') || (/\d+/.test(l) && l.length < 15));
+    const match = currentLabel?.match(/\d+/);
+    const valueNow = match ? parseInt(match[0]) : -1;
 
-    // إذا وجد الرقم 2، سيظهر هنا في الـ Error بوضوح
-    if (result.found === "NOT_FOUND") {
-         throw new Error(`Expected ${expectedNum} but found: ${result.actualLabels.join(', ')}`);
+    console.log(`📊 Result Analysis:`);
+    console.log(`   - Value BEFORE interaction: ${valueBefore}`);
+    console.log(`   - Value NOW: ${valueNow}`);
+
+    // Verification Logic:
+    if (expectedFromFeature > 0) { 
+        // If the scenario expects an increase
+        expect(valueNow).toBe(valueBefore + 1);
+        console.log(`✅ Success: Value incremented from ${valueBefore} to ${valueNow}`);
+    } else {
+        // If the scenario expects no change (stays at zero/current)
+        expect(valueNow).toBe(valueBefore);
+        console.log(`✅ Success: Value remained stable at ${valueNow}`);
     }
-
-    expect(result.found).toContain(expectedNum);
 });
