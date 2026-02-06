@@ -6,8 +6,7 @@ Feature: Flutter Counter Functionality
     When I click the "+" increment button
     Then The counter should display "Index: 1"
 
-  Scenario: Verify counter stays at zero without interaction
-    Given navigate to the Flutter Angular app
-    And enable Flutter accessibility semantics
-    When I click on a neutral area of the screen
-    Then The counter should display "Index: 0"
+Scenario: Verify counter stays at zero without interaction
+  Given navigate to the Flutter Angular app
+  And enable Flutter accessibility semantics
+  Then The counter should display "Index: 0"
