@@ -1,0 +1,24 @@
+{
+  "default": {
+    "paths": [
+      "tests/api/apiFeaturs/**/*.feature"
+    ],
+    "requireModule": [
+      "ts-node/register"
+    ],
+    "require": [
+      "tests/api/apihHooks/**/*.ts",
+      "tests/api/apiSteps/**/*.ts"
+    ],
+    "formatOptions": {
+      "snippetInterface": "async-await",
+      "resultsDir": "allure-results"
+    },
+    "format": [
+      "summary",
+      "progress-bar",
+      ["allure-cucumberjs/reporter", { "resultsDir": "allure-results" }]
+    ],
+    "publishQuiet": true
+  }
+}

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test:api": "cucumber-js tests/api/apiFeaturs/*.feature --require-module ts-node/register --require tests/api/apiSteps/*.ts --require tests/api/apihHooks/*.ts --format html:playwright-report/index.html",
+    "test:api": "cucumber-js tests/api/apiFeaturs/*.feature --require-module ts-node/register --require tests/api/apiSteps/*.ts --require tests/api/apihHooks/*.ts --format html:playwright-report/index.html && npm run generate:reports && npm run open:reports",
     "reports:allure": "allure serve allure-results",
     "clean:reports": "rimraf allure-report/* allure-results/* &mkdir allure-report allure-results",
     "generate:reports": "allure generate allure-results --clean",
