@@ -1,0 +1,212 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "api-e2e-scenarios---swagger-notes;register,-change-password,-and-manage-notes",
+        "keyword": "Scenario Outline",
+        "line": 27,
+        "name": "Register, Change Password, and Manage Notes",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 257858299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4743199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "The API base URL is \"https://practice.expandtesting.com/notes/api\"",
+            "match": {
+              "location": "tests\\api\\apiSteps\\api.steps.ts:71"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 604800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I register a new user with name \"Tester\" and password \"OldPassword123\"",
+            "match": {
+              "location": "tests\\api\\apiSteps\\api.steps.ts:76"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 829635699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "The user should be created successfully",
+            "match": {
+              "location": "tests\\api\\apiSteps\\api.steps.ts:102"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 316000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "I log in to get the access token",
+            "match": {
+              "location": "tests\\api\\apiSteps\\api.steps.ts:107"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 369043599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I change my password from \"OldPassword123\" to \"NewSecurePass456\"",
+            "match": {
+              "location": "tests\\api\\apiSteps\\api.steps.ts:130"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 504578000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "The password should be updated successfully",
+            "match": {
+              "location": "tests\\api\\apiSteps\\api.steps.ts:154"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 212299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I log in with the new password \"NewSecurePass456\"",
+            "match": {
+              "location": "tests\\api\\apiSteps\\api.steps.ts:158"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 311549699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 17,
+            "name": "I create a new note with title \"Start Title\" and description \"API E2E Testing\"",
+            "match": {
+              "location": "tests\\api\\apiSteps\\api.steps.ts:186"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 302952900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "I update the note title to \"Finish Title\"",
+            "match": {
+              "location": "tests\\api\\apiSteps\\api.steps.ts:213"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 224115799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "The note should reflect the updated title \"Finish Title\"",
+            "match": {
+              "location": "tests\\api\\apiSteps\\api.steps.ts:237"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 286214100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 22,
+            "name": "I delete the current note",
+            "match": {
+              "location": "tests\\api\\apiSteps\\api.steps.ts:260"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 224748200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 23,
+            "name": "The note should no longer exist in the system",
+            "match": {
+              "location": "tests\\api\\apiSteps\\api.steps.ts:282"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 291944299
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7853399
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1062233699
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "api-e2e-scenarios---swagger-notes",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "API E2E Scenarios - Swagger Notes",
+    "tags": [],
+    "uri": "tests\\api\\apiFeaturs\\apiFeatures.feature"
+  }
+]

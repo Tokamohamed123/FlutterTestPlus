@@ -1,0 +1,701 @@
+{
+  "scenario": "Unknown Scenario",
+  "timestamp": "2026-02-06T23:12:24.050Z",
+  "summary": {
+    "totalRequests": 9,
+    "successfulRequests": 8,
+    "failedRequests": 1,
+    "warningRequests": 0,
+    "requestsByMethod": {
+      "GET": 2,
+      "POST": 5,
+      "PUT": 1,
+      "DELETE": 1
+    },
+    "requestsByEndpoint": {
+      "register": 1,
+      "login": 2,
+      "change-password": 1,
+      "notes": 1,
+      "69867556f7461602953da463": 4
+    },
+    "responseTimes": [
+      {
+        "step": "Register User",
+        "method": "POST",
+        "endpoint": "register",
+        "status": 201,
+        "size": 170,
+        "timestamp": "2026-02-06T23:12:21.656Z"
+      },
+      {
+        "step": "Login User",
+        "method": "POST",
+        "endpoint": "login",
+        "status": 200,
+        "size": 228,
+        "timestamp": "2026-02-06T23:12:22.096Z"
+      },
+      {
+        "step": "Change Password",
+        "method": "POST",
+        "endpoint": "change-password",
+        "status": 200,
+        "size": 79,
+        "timestamp": "2026-02-06T23:12:22.598Z"
+      },
+      {
+        "step": "Login with New Password",
+        "method": "POST",
+        "endpoint": "login",
+        "status": 200,
+        "size": 228,
+        "timestamp": "2026-02-06T23:12:22.885Z"
+      },
+      {
+        "step": "Create Note",
+        "method": "POST",
+        "endpoint": "notes",
+        "status": 200,
+        "size": 315,
+        "timestamp": "2026-02-06T23:12:23.114Z"
+      },
+      {
+        "step": "Update Note",
+        "method": "PUT",
+        "endpoint": "69867556f7461602953da463",
+        "status": 200,
+        "size": 316,
+        "timestamp": "2026-02-06T23:12:23.352Z"
+      },
+      {
+        "step": "Get Note",
+        "method": "GET",
+        "endpoint": "69867556f7461602953da463",
+        "status": 200,
+        "size": 318,
+        "timestamp": "2026-02-06T23:12:23.584Z"
+      },
+      {
+        "step": "Delete Note",
+        "method": "DELETE",
+        "endpoint": "69867556f7461602953da463",
+        "status": 200,
+        "size": 67,
+        "timestamp": "2026-02-06T23:12:23.800Z"
+      },
+      {
+        "step": "Verify Note Deletion",
+        "method": "GET",
+        "endpoint": "69867556f7461602953da463",
+        "status": 404,
+        "size": 103,
+        "timestamp": "2026-02-06T23:12:24.029Z"
+      }
+    ],
+    "detailedResponses": [
+      {
+        "step": "Register User",
+        "method": "POST",
+        "url": "https://practice.expandtesting.com/notes/api/users/register",
+        "status": 201,
+        "statusText": "Created",
+        "headers": {
+          "access-control-allow-origin": "*",
+          "access-control-allow-credentials": "true",
+          "access-control-allow-methods": "GET, POST, PUT, DELETE, PATCH",
+          "access-control-allow-headers": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token",
+          "content-type": "application/json; charset=utf-8",
+          "content-encoding": "br",
+          "etag": "W/\"aa-TMlLN+oHOA1iZHVavfD21+zNYi8\"",
+          "set-cookie": "express:sess=eyJmbGFzaCI6e319; path=/; httponly\nexpress:sess.sig=tdt42nQZiQvICqmrvHQ1_16fHk0; path=/; httponly",
+          "date": "Fri, 06 Feb 2026 23:12:21 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked"
+        },
+        "body": {
+          "success": true,
+          "status": 201,
+          "message": "User account created successfully",
+          "data": {
+            "id": "69867555f7461602953da456",
+            "name": "Tester",
+            "email": "user_1770419540613@test.com"
+          }
+        },
+        "timestamp": "2026-02-06T23:12:21.656Z",
+        "size": 170,
+        "contentType": "application/json; charset=utf-8"
+      },
+      {
+        "step": "Login User",
+        "method": "POST",
+        "url": "https://practice.expandtesting.com/notes/api/users/login",
+        "status": 200,
+        "statusText": "OK",
+        "headers": {
+          "access-control-allow-origin": "*",
+          "access-control-allow-credentials": "true",
+          "access-control-allow-methods": "GET, POST, PUT, DELETE, PATCH",
+          "access-control-allow-headers": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token",
+          "content-type": "application/json; charset=utf-8",
+          "content-encoding": "br",
+          "etag": "W/\"e4-FNlimMM8B9YdqNpAOjy7sVMdO24\"",
+          "date": "Fri, 06 Feb 2026 23:12:21 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked"
+        },
+        "body": {
+          "success": true,
+          "status": 200,
+          "message": "Login successful",
+          "data": {
+            "id": "69867555f7461602953da456",
+            "name": "Tester",
+            "email": "user_1770419540613@test.com",
+            "token": "b6685e6e6351458b9416c3efdf11256d7b3449819d4b4220bba55c759724c56b"
+          }
+        },
+        "timestamp": "2026-02-06T23:12:22.096Z",
+        "size": 228,
+        "contentType": "application/json; charset=utf-8"
+      },
+      {
+        "step": "Change Password",
+        "method": "POST",
+        "url": "https://practice.expandtesting.com/notes/api/users/change-password",
+        "status": 200,
+        "statusText": "OK",
+        "headers": {
+          "access-control-allow-origin": "*",
+          "access-control-allow-credentials": "true",
+          "access-control-allow-methods": "GET, POST, PUT, DELETE, PATCH",
+          "access-control-allow-headers": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token",
+          "content-type": "application/json; charset=utf-8",
+          "content-encoding": "br",
+          "etag": "W/\"4f-ava50LOZV9GrNX1jv2XMGsJdMdg\"",
+          "date": "Fri, 06 Feb 2026 23:12:22 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked"
+        },
+        "body": {
+          "success": true,
+          "status": 200,
+          "message": "The password was successfully updated"
+        },
+        "timestamp": "2026-02-06T23:12:22.598Z",
+        "size": 79,
+        "contentType": "application/json; charset=utf-8"
+      },
+      {
+        "step": "Login with New Password",
+        "method": "POST",
+        "url": "https://practice.expandtesting.com/notes/api/users/login",
+        "status": 200,
+        "statusText": "OK",
+        "headers": {
+          "access-control-allow-origin": "*",
+          "access-control-allow-credentials": "true",
+          "access-control-allow-methods": "GET, POST, PUT, DELETE, PATCH",
+          "access-control-allow-headers": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token",
+          "content-type": "application/json; charset=utf-8",
+          "content-encoding": "br",
+          "etag": "W/\"e4-FNlimMM8B9YdqNpAOjy7sVMdO24\"",
+          "date": "Fri, 06 Feb 2026 23:12:22 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked"
+        },
+        "body": {
+          "success": true,
+          "status": 200,
+          "message": "Login successful",
+          "data": {
+            "id": "69867555f7461602953da456",
+            "name": "Tester",
+            "email": "user_1770419540613@test.com",
+            "token": "b6685e6e6351458b9416c3efdf11256d7b3449819d4b4220bba55c759724c56b"
+          }
+        },
+        "timestamp": "2026-02-06T23:12:22.885Z",
+        "size": 228,
+        "contentType": "application/json; charset=utf-8"
+      },
+      {
+        "step": "Create Note",
+        "method": "POST",
+        "url": "https://practice.expandtesting.com/notes/api/notes",
+        "status": 200,
+        "statusText": "OK",
+        "headers": {
+          "access-control-allow-origin": "*",
+          "access-control-allow-credentials": "true",
+          "access-control-allow-methods": "GET, POST, PUT, DELETE, PATCH",
+          "access-control-allow-headers": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token",
+          "content-type": "application/json; charset=utf-8",
+          "content-encoding": "br",
+          "etag": "W/\"13b-5zBdJPqpxWUTHRrhbjtY9cpVlNA\"",
+          "date": "Fri, 06 Feb 2026 23:12:22 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked"
+        },
+        "body": {
+          "success": true,
+          "status": 200,
+          "message": "Note successfully created",
+          "data": {
+            "id": "69867556f7461602953da463",
+            "title": "Start Title",
+            "description": "API E2E Testing",
+            "category": "Home",
+            "completed": false,
+            "created_at": "2026-02-06T23:12:22.738Z",
+            "updated_at": "2026-02-06T23:12:22.738Z",
+            "user_id": "69867555f7461602953da456"
+          }
+        },
+        "timestamp": "2026-02-06T23:12:23.114Z",
+        "size": 315,
+        "contentType": "application/json; charset=utf-8"
+      },
+      {
+        "step": "Update Note",
+        "method": "PUT",
+        "url": "https://practice.expandtesting.com/notes/api/notes/69867556f7461602953da463",
+        "status": 200,
+        "statusText": "OK",
+        "headers": {
+          "access-control-allow-origin": "*",
+          "access-control-allow-credentials": "true",
+          "access-control-allow-methods": "GET, POST, PUT, DELETE, PATCH",
+          "access-control-allow-headers": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token",
+          "content-type": "application/json; charset=utf-8",
+          "content-encoding": "br",
+          "etag": "W/\"13c-NkFdLQWI4DRbriuQUBchbUpFHVE\"",
+          "date": "Fri, 06 Feb 2026 23:12:22 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked"
+        },
+        "body": {
+          "success": true,
+          "status": 200,
+          "message": "Note successfully Updated",
+          "data": {
+            "id": "69867556f7461602953da463",
+            "title": "Finish Title",
+            "description": "API E2E Testing",
+            "category": "Home",
+            "completed": false,
+            "created_at": "2026-02-06T23:12:22.738Z",
+            "updated_at": "2026-02-06T23:12:22.968Z",
+            "user_id": "69867555f7461602953da456"
+          }
+        },
+        "timestamp": "2026-02-06T23:12:23.352Z",
+        "size": 316,
+        "contentType": "application/json; charset=utf-8"
+      },
+      {
+        "step": "Get Note",
+        "method": "GET",
+        "url": "https://practice.expandtesting.com/notes/api/notes/69867556f7461602953da463",
+        "status": 200,
+        "statusText": "OK",
+        "headers": {
+          "access-control-allow-origin": "*",
+          "access-control-allow-credentials": "true",
+          "access-control-allow-methods": "GET, POST, PUT, DELETE, PATCH",
+          "access-control-allow-headers": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token",
+          "content-type": "application/json; charset=utf-8",
+          "content-encoding": "br",
+          "etag": "W/\"13e-lultEtjdo63sKa4EBUR+/AevkbY\"",
+          "date": "Fri, 06 Feb 2026 23:12:23 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked"
+        },
+        "body": {
+          "success": true,
+          "status": 200,
+          "message": "Note successfully retrieved",
+          "data": {
+            "id": "69867556f7461602953da463",
+            "title": "Finish Title",
+            "description": "API E2E Testing",
+            "category": "Home",
+            "completed": false,
+            "created_at": "2026-02-06T23:12:22.738Z",
+            "updated_at": "2026-02-06T23:12:22.968Z",
+            "user_id": "69867555f7461602953da456"
+          }
+        },
+        "timestamp": "2026-02-06T23:12:23.584Z",
+        "size": 318,
+        "contentType": "application/json; charset=utf-8"
+      },
+      {
+        "step": "Delete Note",
+        "method": "DELETE",
+        "url": "https://practice.expandtesting.com/notes/api/notes/69867556f7461602953da463",
+        "status": 200,
+        "statusText": "OK",
+        "headers": {
+          "access-control-allow-origin": "*",
+          "access-control-allow-credentials": "true",
+          "access-control-allow-methods": "GET, POST, PUT, DELETE, PATCH",
+          "access-control-allow-headers": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token",
+          "content-type": "application/json; charset=utf-8",
+          "content-encoding": "br",
+          "etag": "W/\"43-NRjYUraIosLt+x2lOOhDKG8vqCU\"",
+          "date": "Fri, 06 Feb 2026 23:12:23 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked"
+        },
+        "body": {
+          "success": true,
+          "status": 200,
+          "message": "Note successfully deleted"
+        },
+        "timestamp": "2026-02-06T23:12:23.800Z",
+        "size": 67,
+        "contentType": "application/json; charset=utf-8"
+      },
+      {
+        "step": "Verify Note Deletion",
+        "method": "GET",
+        "url": "https://practice.expandtesting.com/notes/api/notes/69867556f7461602953da463",
+        "status": 404,
+        "statusText": "Not Found",
+        "headers": {
+          "access-control-allow-origin": "*",
+          "access-control-allow-credentials": "true",
+          "access-control-allow-methods": "GET, POST, PUT, DELETE, PATCH",
+          "access-control-allow-headers": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token",
+          "content-type": "application/json; charset=utf-8",
+          "content-encoding": "br",
+          "etag": "W/\"67-NpoY+d/hy3dgko3A0Pj/DtJedd4\"",
+          "date": "Fri, 06 Feb 2026 23:12:23 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked"
+        },
+        "body": {
+          "success": false,
+          "status": 404,
+          "message": "No note was found with the provided ID, Maybe it was deleted"
+        },
+        "timestamp": "2026-02-06T23:12:24.029Z",
+        "size": 103,
+        "contentType": "application/json; charset=utf-8"
+      }
+    ]
+  },
+  "responses": [
+    {
+      "step": "Register User",
+      "method": "POST",
+      "url": "https://practice.expandtesting.com/notes/api/users/register",
+      "status": 201,
+      "statusText": "Created",
+      "headers": {
+        "access-control-allow-origin": "*",
+        "access-control-allow-credentials": "true",
+        "access-control-allow-methods": "GET, POST, PUT, DELETE, PATCH",
+        "access-control-allow-headers": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token",
+        "content-type": "application/json; charset=utf-8",
+        "content-encoding": "br",
+        "etag": "W/\"aa-TMlLN+oHOA1iZHVavfD21+zNYi8\"",
+        "set-cookie": "express:sess=eyJmbGFzaCI6e319; path=/; httponly\nexpress:sess.sig=tdt42nQZiQvICqmrvHQ1_16fHk0; path=/; httponly",
+        "date": "Fri, 06 Feb 2026 23:12:21 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "body": {
+        "success": true,
+        "status": 201,
+        "message": "User account created successfully",
+        "data": {
+          "id": "69867555f7461602953da456",
+          "name": "Tester",
+          "email": "user_1770419540613@test.com"
+        }
+      },
+      "timestamp": "2026-02-06T23:12:21.656Z",
+      "size": 170,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "step": "Login User",
+      "method": "POST",
+      "url": "https://practice.expandtesting.com/notes/api/users/login",
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "*",
+        "access-control-allow-credentials": "true",
+        "access-control-allow-methods": "GET, POST, PUT, DELETE, PATCH",
+        "access-control-allow-headers": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token",
+        "content-type": "application/json; charset=utf-8",
+        "content-encoding": "br",
+        "etag": "W/\"e4-FNlimMM8B9YdqNpAOjy7sVMdO24\"",
+        "date": "Fri, 06 Feb 2026 23:12:21 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "body": {
+        "success": true,
+        "status": 200,
+        "message": "Login successful",
+        "data": {
+          "id": "69867555f7461602953da456",
+          "name": "Tester",
+          "email": "user_1770419540613@test.com",
+          "token": "b6685e6e6351458b9416c3efdf11256d7b3449819d4b4220bba55c759724c56b"
+        }
+      },
+      "timestamp": "2026-02-06T23:12:22.096Z",
+      "size": 228,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "step": "Change Password",
+      "method": "POST",
+      "url": "https://practice.expandtesting.com/notes/api/users/change-password",
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "*",
+        "access-control-allow-credentials": "true",
+        "access-control-allow-methods": "GET, POST, PUT, DELETE, PATCH",
+        "access-control-allow-headers": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token",
+        "content-type": "application/json; charset=utf-8",
+        "content-encoding": "br",
+        "etag": "W/\"4f-ava50LOZV9GrNX1jv2XMGsJdMdg\"",
+        "date": "Fri, 06 Feb 2026 23:12:22 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "body": {
+        "success": true,
+        "status": 200,
+        "message": "The password was successfully updated"
+      },
+      "timestamp": "2026-02-06T23:12:22.598Z",
+      "size": 79,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "step": "Login with New Password",
+      "method": "POST",
+      "url": "https://practice.expandtesting.com/notes/api/users/login",
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "*",
+        "access-control-allow-credentials": "true",
+        "access-control-allow-methods": "GET, POST, PUT, DELETE, PATCH",
+        "access-control-allow-headers": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token",
+        "content-type": "application/json; charset=utf-8",
+        "content-encoding": "br",
+        "etag": "W/\"e4-FNlimMM8B9YdqNpAOjy7sVMdO24\"",
+        "date": "Fri, 06 Feb 2026 23:12:22 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "body": {
+        "success": true,
+        "status": 200,
+        "message": "Login successful",
+        "data": {
+          "id": "69867555f7461602953da456",
+          "name": "Tester",
+          "email": "user_1770419540613@test.com",
+          "token": "b6685e6e6351458b9416c3efdf11256d7b3449819d4b4220bba55c759724c56b"
+        }
+      },
+      "timestamp": "2026-02-06T23:12:22.885Z",
+      "size": 228,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "step": "Create Note",
+      "method": "POST",
+      "url": "https://practice.expandtesting.com/notes/api/notes",
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "*",
+        "access-control-allow-credentials": "true",
+        "access-control-allow-methods": "GET, POST, PUT, DELETE, PATCH",
+        "access-control-allow-headers": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token",
+        "content-type": "application/json; charset=utf-8",
+        "content-encoding": "br",
+        "etag": "W/\"13b-5zBdJPqpxWUTHRrhbjtY9cpVlNA\"",
+        "date": "Fri, 06 Feb 2026 23:12:22 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "body": {
+        "success": true,
+        "status": 200,
+        "message": "Note successfully created",
+        "data": {
+          "id": "69867556f7461602953da463",
+          "title": "Start Title",
+          "description": "API E2E Testing",
+          "category": "Home",
+          "completed": false,
+          "created_at": "2026-02-06T23:12:22.738Z",
+          "updated_at": "2026-02-06T23:12:22.738Z",
+          "user_id": "69867555f7461602953da456"
+        }
+      },
+      "timestamp": "2026-02-06T23:12:23.114Z",
+      "size": 315,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "step": "Update Note",
+      "method": "PUT",
+      "url": "https://practice.expandtesting.com/notes/api/notes/69867556f7461602953da463",
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "*",
+        "access-control-allow-credentials": "true",
+        "access-control-allow-methods": "GET, POST, PUT, DELETE, PATCH",
+        "access-control-allow-headers": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token",
+        "content-type": "application/json; charset=utf-8",
+        "content-encoding": "br",
+        "etag": "W/\"13c-NkFdLQWI4DRbriuQUBchbUpFHVE\"",
+        "date": "Fri, 06 Feb 2026 23:12:22 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "body": {
+        "success": true,
+        "status": 200,
+        "message": "Note successfully Updated",
+        "data": {
+          "id": "69867556f7461602953da463",
+          "title": "Finish Title",
+          "description": "API E2E Testing",
+          "category": "Home",
+          "completed": false,
+          "created_at": "2026-02-06T23:12:22.738Z",
+          "updated_at": "2026-02-06T23:12:22.968Z",
+          "user_id": "69867555f7461602953da456"
+        }
+      },
+      "timestamp": "2026-02-06T23:12:23.352Z",
+      "size": 316,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "step": "Get Note",
+      "method": "GET",
+      "url": "https://practice.expandtesting.com/notes/api/notes/69867556f7461602953da463",
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "*",
+        "access-control-allow-credentials": "true",
+        "access-control-allow-methods": "GET, POST, PUT, DELETE, PATCH",
+        "access-control-allow-headers": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token",
+        "content-type": "application/json; charset=utf-8",
+        "content-encoding": "br",
+        "etag": "W/\"13e-lultEtjdo63sKa4EBUR+/AevkbY\"",
+        "date": "Fri, 06 Feb 2026 23:12:23 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "body": {
+        "success": true,
+        "status": 200,
+        "message": "Note successfully retrieved",
+        "data": {
+          "id": "69867556f7461602953da463",
+          "title": "Finish Title",
+          "description": "API E2E Testing",
+          "category": "Home",
+          "completed": false,
+          "created_at": "2026-02-06T23:12:22.738Z",
+          "updated_at": "2026-02-06T23:12:22.968Z",
+          "user_id": "69867555f7461602953da456"
+        }
+      },
+      "timestamp": "2026-02-06T23:12:23.584Z",
+      "size": 318,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "step": "Delete Note",
+      "method": "DELETE",
+      "url": "https://practice.expandtesting.com/notes/api/notes/69867556f7461602953da463",
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "*",
+        "access-control-allow-credentials": "true",
+        "access-control-allow-methods": "GET, POST, PUT, DELETE, PATCH",
+        "access-control-allow-headers": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token",
+        "content-type": "application/json; charset=utf-8",
+        "content-encoding": "br",
+        "etag": "W/\"43-NRjYUraIosLt+x2lOOhDKG8vqCU\"",
+        "date": "Fri, 06 Feb 2026 23:12:23 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "body": {
+        "success": true,
+        "status": 200,
+        "message": "Note successfully deleted"
+      },
+      "timestamp": "2026-02-06T23:12:23.800Z",
+      "size": 67,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "step": "Verify Note Deletion",
+      "method": "GET",
+      "url": "https://practice.expandtesting.com/notes/api/notes/69867556f7461602953da463",
+      "status": 404,
+      "statusText": "Not Found",
+      "headers": {
+        "access-control-allow-origin": "*",
+        "access-control-allow-credentials": "true",
+        "access-control-allow-methods": "GET, POST, PUT, DELETE, PATCH",
+        "access-control-allow-headers": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token",
+        "content-type": "application/json; charset=utf-8",
+        "content-encoding": "br",
+        "etag": "W/\"67-NpoY+d/hy3dgko3A0Pj/DtJedd4\"",
+        "date": "Fri, 06 Feb 2026 23:12:23 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "body": {
+        "success": false,
+        "status": 404,
+        "message": "No note was found with the provided ID, Maybe it was deleted"
+      },
+      "timestamp": "2026-02-06T23:12:24.029Z",
+      "size": 103,
+      "contentType": "application/json; charset=utf-8"
+    }
+  ]
+}

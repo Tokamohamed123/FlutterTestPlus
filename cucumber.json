@@ -1,14 +1,17 @@
 {
   "default": {
     "paths": [
-      "Cucumber/features/**/*.feature"
+      "tests/Cucumber/features/**/*.feature",
+      "tests/api/apiFeaturs/**/*.feature"
     ],
     "requireModule": [
       "ts-node/register"
     ],
     "require": [
-      "Cucumber/hooks/**/*.ts",
-      "Cucumber/steps/**/*.ts"
+      "tests/Cucumber/hooks/**/*.ts",
+      "tests/Cucumber/steps/**/*.ts",
+      "tests/api/apihHooks/**/*.ts",
+      "tests/api/apiSteps/**/*.ts"
     ],
     "formatOptions": {
       "snippetInterface": "async-await"

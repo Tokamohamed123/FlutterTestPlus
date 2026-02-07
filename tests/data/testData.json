@@ -1,0 +1,14 @@
+[
+  {
+    "name": "User_One",
+    "password": "password123",
+    "noteTitle": "First JSON Note",
+    "noteDesc": "Description from JSON file"
+  },
+  {
+    "name": "User_Two",
+    "password": "securePass789",
+    "noteTitle": "Second JSON Note",
+    "noteDesc": "Another description from JSON"
+  }
+]

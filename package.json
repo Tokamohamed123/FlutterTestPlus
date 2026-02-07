@@ -3,13 +3,22 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js"
+    "test:api": "cucumber-js tests/api/apiFeaturs/*.feature --require-module ts-node/register --require tests/api/apiSteps/*.ts --require tests/api/apihHooks/*.ts --format html:playwright-report/index.html",
+    "reports:allure": "allure serve allure-results",
+    "clean:reports": "rimraf allure-report/* allure-results/* &mkdir allure-report allure-results",
+    "generate:reports": "allure generate allure-results --clean",
+    "open:reports": "npx allure open allure-report",
+    "pretest": "npm run clean:reports",
+    "posttest": "npm run generate:reports && npm run open:reports"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^10.0.0",
     "@playwright/test": "^1.40.0",
+    "allure-cucumberjs": "^2.15.1",
     "ts-node": "^10.9.0",
-    "typescript": "^5.0.0",
-    "allure-cucumberjs": "^2.0.0"
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "allure-playwright": "^3.4.5"
   }
 }
