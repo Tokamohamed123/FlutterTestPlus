@@ -27,12 +27,14 @@ jobs:
      
       - name: Run Playwright tests
         run: npm run test:api
+        env:
+          PW_HEADLESS: 1
         continue-on-error: true # to complete the job even if tests fail
 
       - name: Generate Allure Report
         if: always() 
         run: |
-          allure generate allure-results --clean -o allure-report
+          npx allure-commandline@2.24.1 generate allure-results --clean -o allure-report
 
       # 3.upload the Allure report to GitHub Actions artifacts
       - name: Upload Artifact

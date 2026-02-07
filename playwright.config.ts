@@ -14,6 +14,7 @@ export default defineConfig({
 
   use: {
     trace: 'on',
+    headless: process.env.CI ? true : false,
   },
 
   projects: [
